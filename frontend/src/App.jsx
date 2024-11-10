@@ -49,7 +49,7 @@ function App() {
             />
           </Box>
           <Divider />
-          <Box component="section" className="my-5 mx-5">
+          <Box component="section" className="m-5 pb-5">
             <Grid container spacing={2} columns={2}>
               {newReleases.map((release) => (
                 <Grid item key={release.id} size={1}>
