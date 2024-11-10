@@ -10,7 +10,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 function MusicCard({ title, artist, image }) {
   return (
-    <Card sx={{ display: "flex" }}>
+    <Card sx={{ display: "flex", justifyContent: "space-between" }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="h5">
@@ -32,7 +32,11 @@ function MusicCard({ title, artist, image }) {
       </Box>
       <CardMedia
         component="img"
-        sx={{ width: 151 }}
+        sx={{
+          width: "30%",
+          height: "30%",
+          alignItems: "center",
+        }}
         image={image}
         alt="Live from space album cover"
       />
