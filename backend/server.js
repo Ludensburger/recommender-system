@@ -1,20 +1,40 @@
-const SpotifyWebApi = require("spotify-web-api-node");
+require("dotenv").config();
 
-const spotifyApi = new SpotifyWebApi({
-  clientId: "47396995f42b4d33960a2be3d3561ffe",
-  clientSecret: "19447a7ced5c4ff4b21b0debe055a65c",
+const express = require("express");
+const cors = require("cors");
+const trackRoutes = require("./routes/tracks");
+const { refreshToken } = require("./utils/spotify");
+
+const app = express();
+
+app.use(cors());
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  console.log("middleware is used here hehe");
+  next();
 });
 
-spotifyApi.setAccessToken(
-  "BQBsGqbeKmll7ULchOzPxqvgwWaU65qjt-1HCDmk9oP-jad9Knn7L90VoSwdgzv6OIOIG1Eq8BsSUdtZeXR7n-ZJmr04iD3NMt-V8nlbq1uEVk0BblQ"
-);
+app.use("/api/tracks", trackRoutes);
 
-// Get a playlist
-spotifyApi.getTrack("7ne2hzW4jaU5tacaCI4kJH").then(
-  function (data) {
-    console.log("Some information about this track", data.body.album.images);
-  },
-  function (err) {
-    console.log("Something went wrong!", err);
+app.use(async (err, req, res, next) => {
+  if (err && err.body && err.body.error) {
+    if (
+      err.body.error.status === 401 &&
+      err.body.error.message === "The access token expired"
+    ) {
+      await refreshToken();
+      // Retry the original request
+      req.retry = true;
+      next();
+    } else {
+      res.status(err.body.error.status).json({ error: err.body.error.message });
+    }
+  } else {
+    res.status(500).json({ error: "Something went wrong!" });
   }
-);
+});
+
+app.listen(process.env.PORT, () => {
+  console.log("Listening on port", process.env.PORT);
+});
