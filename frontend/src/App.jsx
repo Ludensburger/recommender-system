@@ -57,6 +57,7 @@ function App() {
                     title={release.name}
                     artist={release.artists[0].name}
                     image={release.images[0].url}
+                    link={release.external_urls.spotify}
                   />
                 </Grid>
               ))}
