@@ -11,8 +11,7 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 function MusicCard({ title, artist, image, link }) {
   return (
     <Card
-      sx={{ display: "flex", justifyContent: "space-between", height: "100%" }}
-    >
+      sx={{ display: "flex", justifyContent: "space-between", height: "100%" }}>
       <Box sx={{ display: "flex", flexDirection: "column", maxWidth: "70%" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography
@@ -23,15 +22,13 @@ function MusicCard({ title, artist, image, link }) {
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
-            }}
-          >
+            }}>
             {title}
           </Typography>
           <Typography
             variant="subtitle1"
             component="div"
-            sx={{ color: "text.secondary", textAlign: "left" }}
-          >
+            sx={{ color: "text.secondary", textAlign: "left" }}>
             {artist}
           </Typography>
         </CardContent>
@@ -41,8 +38,7 @@ function MusicCard({ title, artist, image, link }) {
             component="a"
             href={link}
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             <PlayArrowIcon sx={{ height: 38, width: 38 }} />
           </IconButton>
         </Box>
