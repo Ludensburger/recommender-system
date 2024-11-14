@@ -20,7 +20,7 @@ function App() {
         const response = await axios.get(
           "http://localhost:4000/api/tracks/new-releases"
         );
-        setNewReleases(response.data.albums.items);
+        setNewReleases(response.data.newReleases);
       } catch (error) {
         console.error("Could not fetch new releases", error);
       }
@@ -52,7 +52,7 @@ function App() {
           <Box component="section" className="m-5 pb-5">
             <Grid container spacing={2} columns={2}>
               {newReleases.map((release) => (
-                <Grid item key={release.id} size={1}>
+                <Grid key={release.id} size={1}>
                   <MusicCard
                     title={release.name}
                     artist={release.artists[0].name}
