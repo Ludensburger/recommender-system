@@ -8,8 +8,8 @@ router.get("/new-releases", (req, res, next) => {
     spotifyApi
       .getNewReleases()
       .then((data) => {
-        const newReleases = data.body.albums.items;
-        res.json({ newReleases });
+        const newReleases = data.body;
+        res.json(newReleases);
       })
       .catch((err) => {
         if (req.retry) {
