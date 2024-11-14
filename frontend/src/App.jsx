@@ -20,7 +20,7 @@ function App() {
         const response = await axios.get(
           "http://localhost:4001/api/tracks/new-releases"
         );
-        setNewReleases(response.data.newReleases);
+        setNewReleases(response.data);
       } catch (error) {
         console.error("Could not fetch new releases", error);
       }
