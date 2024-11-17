@@ -6,13 +6,18 @@ import {
   Paper,
   TextField,
   Typography,
+  Button,
 } from "@mui/material";
 import MusicCard from "./components/MusicCard";
+import MusicModal from "./components/MusicModal";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
   const [newReleases, setNewReleases] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchNewReleases = async () => {
@@ -26,8 +31,50 @@ function App() {
       }
     };
 
+    const fetchGenres = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:4001/api/tracks/get-genres"
+        );
+        console.log("Genres fetched:", response.data); // Confirm data structure
+        setGenres(response.data);
+      } catch (error) {
+        console.error(
+          "Could not fetch genres:",
+          error.response?.data || error.message
+        );
+      }
+    };
+
     fetchNewReleases();
+    fetchGenres();
   }, []);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleGenreToggle = (genre) => {
+    const currentIndex = selectedGenres.indexOf(genre);
+    const newSelectedGenres = [...selectedGenres];
+
+    if (currentIndex === -1) {
+      newSelectedGenres.push(genre);
+    } else {
+      newSelectedGenres.splice(currentIndex, 1);
+    }
+
+    setSelectedGenres(newSelectedGenres);
+  };
+
+  const handleSubmit = () => {
+    console.log("Selected genres:", selectedGenres);
+    handleCloseModal();
+  };
 
   console.log(newReleases);
 
@@ -50,6 +97,19 @@ function App() {
           </Box>
           <Divider />
           <Box component="section" className="m-5 pb-5">
+            <Typography variant="h5" component="h2" className="!font-bold">
+              Genres
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleOpenModal}>
+              Select Genres
+            </Button>
+          </Box>
+
+          <Divider />
+          <Box component="section" className="m-5 pb-5">
             <Grid container spacing={2} columns={2}>
               {newReleases.map((release) => (
                 <Grid key={release.id} size={1}>
@@ -65,6 +125,15 @@ function App() {
           </Box>
         </Paper>
       </Container>
+
+      <MusicModal
+        open={isModalOpen}
+        handleClose={handleCloseModal}
+        genres={genres}
+        selectedGenres={selectedGenres}
+        handleGenreToggle={handleGenreToggle}
+        handleSubmit={handleSubmit}
+      />
     </>
   );
 }
