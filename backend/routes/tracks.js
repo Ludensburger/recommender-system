@@ -26,21 +26,18 @@ router.get("/new-releases", (req, res, next) => {
   fetchNewReleases();
 });
 
-router.get("/get-recommendations", (req, res, next) => {
-  const fetchRecommendations = () => {
+// getAvailableGenreSeeds
+
+router.get("/get-genres", (req, res, next) => {
+  const fetchGenres = () => {
     spotifyApi
-      .getRecommendations({
-        seed_artists: ["4NHQUGzhtTLFvgF5SZesLK"],
-        min_energy: 0.4,
-        min_popularity: 50,
-      })
+      .getAvailableGenreSeeds()
       .then((data) => {
-        const recommendations = data.body.tracks;
-        console.log("Fetched recommendations:", recommendations);
-        res.json(recommendations);
+        const genres = data.body.genres;
+        res.json(genres);
       })
       .catch((err) => {
-        console.error("Error fetching recommendations:", err);
+        console.error("Error fetching genres:", err);
         if (req.retry) {
           res
             .status(err.body.error.status)
@@ -51,7 +48,7 @@ router.get("/get-recommendations", (req, res, next) => {
       });
   };
 
-  fetchRecommendations();
+  fetchGenres();
 });
 
 module.exports = router;
