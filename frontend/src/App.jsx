@@ -155,8 +155,7 @@ function App() {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleOpenModal}
-            >
+              onClick={handleOpenModal}>
               Select Genres
             </Button>
           </Box>
