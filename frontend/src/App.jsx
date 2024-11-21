@@ -12,12 +12,14 @@ import MusicCard from "./components/MusicCard";
 import MusicModal from "./components/MusicModal";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import usersData from "./assets/users.json";
 
 function App() {
   const [newReleases, setNewReleases] = useState([]);
   const [genres, setGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [recommendedArtists, setRecommendedArtists] = useState([]);
 
   useEffect(() => {
     const fetchNewReleases = async () => {
@@ -50,6 +52,48 @@ function App() {
     fetchGenres();
   }, []);
 
+  const cosineSimilarity = (vecA, vecB) => {
+    const dotProduct = vecA.reduce((sum, val, i) => sum + val * vecB[i], 0);
+    const magnitudeA = Math.sqrt(vecA.reduce((sum, val) => sum + val * val, 0));
+    const magnitudeB = Math.sqrt(vecB.reduce((sum, val) => sum + val * val, 0));
+    return dotProduct / (magnitudeA * magnitudeB);
+  };
+
+  const recommendArtists = (selectedGenres) => {
+    if (!genres || genres.length === 0) {
+      return [];
+    }
+
+    // Filter out any undefined values from genres
+    const validGenres = genres.filter((genre) => genre !== undefined);
+
+    const userVector = validGenres.map((genre) =>
+      selectedGenres.includes(genre) ? 1 : 0
+    );
+
+    const similarities = usersData.map((user) => {
+      const userGenresVector = validGenres.map((genre) =>
+        user.genres.includes(genre) ? 1 : 0
+      );
+      const similarity = cosineSimilarity(userVector, userGenresVector);
+      return { user, similarity };
+    });
+
+    similarities.sort((a, b) => b.similarity - a.similarity);
+
+    // Consider top 3 similar users for more diverse recommendations
+    const topUsers = similarities.slice(0, 3).map((sim) => sim.user);
+    const recommendedArtists = [];
+
+    topUsers.forEach((user) => {
+      user.artists.forEach((artist) => {
+        recommendedArtists.push({ artist, user: user.name });
+      });
+    });
+
+    return recommendedArtists;
+  };
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -72,7 +116,15 @@ function App() {
   };
 
   const handleSubmit = () => {
+    if (!genres || genres.length === 0) {
+      console.error("Genres are not loaded yet.");
+      return;
+    }
+
     console.log("Selected genres:", selectedGenres);
+    const recommendedArtists = recommendArtists(selectedGenres);
+    console.log("Recommended artists:", recommendedArtists);
+    setRecommendedArtists(recommendedArtists);
     handleCloseModal();
   };
 
@@ -103,12 +155,29 @@ function App() {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleOpenModal}>
+              onClick={handleOpenModal}
+            >
               Select Genres
             </Button>
           </Box>
-
           <Divider />
+          <Box component="section" className="m-5 pb-5">
+            <Typography variant="h5" component="h2" className="!font-bold">
+              Recommended Artists
+            </Typography>
+            <Grid container spacing={2} columns={2}>
+              {recommendedArtists.map((item, index) => (
+                <Grid key={index} size={1}>
+                  <MusicCard title={item.artist} />
+                  <Typography variant="body2" color="textSecondary">
+                    Recommended by: {item.user}
+                  </Typography>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+          <Divider />
+
           <Box component="section" className="m-5 pb-5">
             <Grid container spacing={2} columns={2}>
               {newReleases.map((release) => (
@@ -119,6 +188,24 @@ function App() {
                     image={release.images[0].url}
                     link={release.external_urls.spotify}
                   />
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+
+          <Divider />
+
+          <Box component="section" className="m-5 pb-5">
+            <Typography variant="h5" component="h2" className="!font-bold">
+              Recommended Artists
+            </Typography>
+            <Grid container spacing={2} columns={2}>
+              {recommendedArtists.map((item, index) => (
+                <Grid key={index} size={1}>
+                  <MusicCard title={item.artist} />
+                  <Typography variant="body2" color="textSecondary">
+                    Recommended by: {item.user}
+                  </Typography>
                 </Grid>
               ))}
             </Grid>
