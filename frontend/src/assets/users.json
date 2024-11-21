@@ -1,0 +1,363 @@
+[
+  {
+    "id": 1,
+    "name": "Rinko",
+    "genres": [
+      "rock",
+      "pop",
+      "jazz",
+      "hip-hop",
+      "classical",
+      "ambient",
+      "anime"
+    ],
+    "artists": [
+      "Queen",
+      "Taylor Swift",
+      "Miles Davis",
+      "Kanye West",
+      "Ludwig van Beethoven"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Jamal",
+    "genres": [
+      "blues",
+      "country",
+      "electronic",
+      "reggae",
+      "soul",
+      "afrobeat",
+      "alt-rock"
+    ],
+    "artists": [
+      "B.B. King",
+      "Johnny Cash",
+      "Daft Punk",
+      "Bob Marley",
+      "Aretha Franklin"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Jomarie",
+    "genres": [
+      "metal",
+      "folk",
+      "disco",
+      "funk",
+      "gospel",
+      "black-metal",
+      "bluegrass"
+    ],
+    "artists": [
+      "Metallica",
+      "Bob Dylan",
+      "Bee Gees",
+      "James Brown",
+      "Kirk Franklin"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Dave",
+    "genres": ["latin", "opera", "punk", "r&b", "ska", "bossanova", "brazil"],
+    "artists": [
+      "Shakira",
+      "Luciano Pavarotti",
+      "The Ramones",
+      "Usher",
+      "The Specials"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Robien",
+    "genres": [
+      "rock",
+      "pop",
+      "jazz",
+      "hip-hop",
+      "classical",
+      "breakbeat",
+      "british"
+    ],
+    "artists": [
+      "The Beatles",
+      "Ariana Grande",
+      "John Coltrane",
+      "Drake",
+      "Johann Sebastian Bach"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "James",
+    "genres": [
+      "blues",
+      "country",
+      "electronic",
+      "reggae",
+      "soul",
+      "cantopop",
+      "chicago-house"
+    ],
+    "artists": [
+      "Muddy Waters",
+      "Dolly Parton",
+      "Calvin Harris",
+      "Peter Tosh",
+      "Marvin Gaye"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Percy",
+    "genres": ["metal", "folk", "disco", "funk", "gospel", "children", "chill"],
+    "artists": [
+      "Iron Maiden",
+      "Joan Baez",
+      "Chic",
+      "Sly and the Family Stone",
+      "Yolanda Adams"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Donz",
+    "genres": ["latin", "opera", "punk", "r&b", "ska", "classical", "club"],
+    "artists": [
+      "Enrique Iglesias",
+      "Placido Domingo",
+      "Green Day",
+      "Beyoncé",
+      "Madness"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Yanz",
+    "genres": [
+      "rock",
+      "pop",
+      "jazz",
+      "hip-hop",
+      "classical",
+      "comedy",
+      "country"
+    ],
+    "artists": [
+      "Led Zeppelin",
+      "Katy Perry",
+      "Duke Ellington",
+      "Jay-Z",
+      "Wolfgang Amadeus Mozart"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Venice",
+    "genres": [
+      "blues",
+      "country",
+      "electronic",
+      "reggae",
+      "soul",
+      "dance",
+      "dancehall"
+    ],
+    "artists": [
+      "John Lee Hooker",
+      "Willie Nelson",
+      "Deadmau5",
+      "Jimmy Cliff",
+      "Otis Redding"
+    ]
+  },
+
+  [
+    {
+      "id": 11,
+      "name": "Clara",
+      "genres": [
+        "ambient",
+        "anime",
+        "indie",
+        "indie-pop",
+        "new-age",
+        "philippines-opm",
+        "pop"
+      ],
+      "artists": ["Enya", "Hikaru Utada", "Bon Iver", "Lorde", "Eraserheads"]
+    },
+    {
+      "id": 12,
+      "name": "Liam",
+      "genres": [
+        "metalcore",
+        "hardcore",
+        "alt-rock",
+        "punk-rock",
+        "grunge",
+        "post-dubstep",
+        "psych-rock"
+      ],
+      "artists": [
+        "Bring Me the Horizon",
+        "Converge",
+        "Nirvana",
+        "The Offspring",
+        "Tame Impala"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Aria",
+      "genres": [
+        "classical",
+        "opera",
+        "new-release",
+        "piano",
+        "j-pop",
+        "rainy-day",
+        "edm"
+      ],
+      "artists": [
+        "Yiruma",
+        "Andrea Bocelli",
+        "Kenshi Yonezu",
+        "Porter Robinson",
+        "Rachmaninoff"
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Marcus",
+      "genres": [
+        "hard-rock",
+        "heavy-metal",
+        "death-metal",
+        "industrial",
+        "groove",
+        "j-rock",
+        "idm"
+      ],
+      "artists": ["AC/DC", "Slayer", "Slipknot", "Nine Inch Nails", "X Japan"]
+    },
+    {
+      "id": 15,
+      "name": "Hannah",
+      "genres": [
+        "k-pop",
+        "dancehall",
+        "club",
+        "funk",
+        "party",
+        "holidays",
+        "pop-film"
+      ],
+      "artists": ["BTS", "Sean Paul", "Rihanna", "Bruno Mars", "Mariah Carey"]
+    },
+    {
+      "id": 16,
+      "name": "Nina",
+      "genres": [
+        "folk",
+        "happy",
+        "guitar",
+        "indie",
+        "jazz",
+        "latin",
+        "minimal-techno"
+      ],
+      "artists": [
+        "Fleet Foxes",
+        "Norah Jones",
+        "Rodrigo y Gabriela",
+        "Bebel Gilberto",
+        "Nicolas Jaar"
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Andre",
+      "genres": [
+        "dub",
+        "dubstep",
+        "detroit-techno",
+        "garage",
+        "brazil",
+        "iranian",
+        "house"
+      ],
+      "artists": [
+        "King Tubby",
+        "Skrillex",
+        "Carl Craig",
+        "Disclosure",
+        "Anoushka Shankar"
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Sophia",
+      "genres": [
+        "anime",
+        "bossanova",
+        "movies",
+        "new-age",
+        "piano",
+        "philippines-opm",
+        "chill"
+      ],
+      "artists": [
+        "Joe Hisaishi",
+        "João Gilberto",
+        "Hans Zimmer",
+        "Erik Satie",
+        "Ben&Ben"
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Ethan",
+      "genres": [
+        "alt-rock",
+        "black-metal",
+        "emo",
+        "goth",
+        "grindcore",
+        "hardstyle",
+        "psych-rock"
+      ],
+      "artists": [
+        "Radiohead",
+        "Darkthrone",
+        "My Chemical Romance",
+        "Bauhaus",
+        "Aphex Twin"
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Mira",
+      "genres": [
+        "anime",
+        "dance",
+        "edm",
+        "k-pop",
+        "minimal-techno",
+        "philippines-opm",
+        "rainy-day"
+      ],
+      "artists": [
+        "Kyary Pamyu Pamyu",
+        "Armin van Buuren",
+        "Taeyang",
+        "Zedd",
+        "Parokya ni Edgar"
+      ]
+    }
+  ]
+]
