@@ -51,4 +51,28 @@ router.get("/get-genres", (req, res, next) => {
   fetchGenres();
 });
 
+// getArtist
+router.get("/get-artist/:id", (req, res, next) => {
+  const fetchArtist = () => {
+    spotifyApi
+      .getArtist(req.params.id)
+      .then((data) => {
+        const artist = data.body;
+        res.json(artist);
+      })
+      .catch((err) => {
+        console.error("Error fetching artist:", err);
+        if (req.retry) {
+          res
+            .status(err.body.error.status)
+            .json({ error: err.body.error.message });
+        } else {
+          next(err);
+        }
+      });
+  };
+
+  fetchArtist();
+});
+
 module.exports = router;
