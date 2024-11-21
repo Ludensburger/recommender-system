@@ -34,13 +34,14 @@ const MusicModal = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-        }}>
+        }}
+      >
         <Typography variant="h5" component="h2" sx={{ mb: 3, fontWeight: 600 }}>
           Select Genres
         </Typography>
         <Grid container spacing={2} justifyContent="center">
           {genres.map((genre) => (
-            <Grid item xs={6} sm={4} key={genre}>
+            <Grid item xs={6} sm={4} md={3} key={genre}>
               <ListItem
                 button
                 onClick={() => handleGenreToggle(genre)}
@@ -49,7 +50,8 @@ const MusicModal = ({
                   borderRadius: 2,
                   transition: "background-color 0.2s",
                   "&:hover": { bgcolor: "action.hover" },
-                }}>
+                }}
+              >
                 <Checkbox
                   checked={selectedGenres.indexOf(genre) !== -1}
                   tabIndex={-1}
@@ -68,7 +70,8 @@ const MusicModal = ({
             mt: 3,
             px: 4,
             alignSelf: "center",
-          }}>
+          }}
+        >
           Submit
         </Button>
       </Box>
